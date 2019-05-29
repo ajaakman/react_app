@@ -1,45 +1,28 @@
 import React, { Component} from 'react';
 import ReactDOM from 'react-dom';
 
-let skiData = {
-    total: 50,
-    powder: 20,
-    backcounty: 10,
-    goal: 100
-}
-
-const getPercent = decimal => {
-    return decimal * 100 + '%'
-}
-
-const calcGoalProgress = (total, goal) => {
-    return getPercent(total/goal)
-}
-
-const SkiDayCounter = ({total, powder,backcounty, goal}) =>{
-    return(
-    <section>
-        <div>
-            <p> Total Days: {total}</p>
-        </div>
-        <div>
-            <p> Powder Days: {powder}</p>
-        </div>
-        <div>
-            <p> Backcounty Days: {backcounty}</p>
-        </div>
-        <div>
-            <p> Goal Progress: {calcGoalProgress(total, goal)}</p>
-        </div>
-    </section>
+const Book = ({title, author, pages}) => {
+    return (
+        <section>
+            <h2>{title}</h2>
+            <p>By: {author}</p>
+            <p>Pages: {pages} pages</p>
+        </section>
     )
 }
 
+const Library = () => {
+    return (
+        <div>
+            <Book title="The Sun Also Rises" author= "Ernest Hemingway" pages={260}/>
+            <Book title="White Teeth" author= "Zadie Smith" pages={480}/>
+            <Book title="Cat's Cradle" author= "Kurt Vonnegut" pages={358}/>
+        </div>
+    )
+}
+
+
 ReactDOM.render(
-    <SkiDayCounter 
-        total={skiData.total}
-        powder={skiData.powder}
-        backcounty={skiData.backcounty}
-        goal={skiData.goal}/>,
+    <Library />,
     document.getElementById('root')
 )
