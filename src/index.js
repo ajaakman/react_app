@@ -29,11 +29,19 @@ const NotHiring = () =>
     </div>
 
 class Library extends React.Component {
-
+   
     state = { 
         open: true,
         freeBookmark: false,
         hiring: false
+    }
+
+    componentDidMount() {
+        console.log("Component is  mounted!!")
+    }
+    
+    componentDidUpdate() {
+        console.log("Component updated!!")        
     }
     
     toggleOpenClosed = () => {
@@ -61,7 +69,6 @@ class Library extends React.Component {
         )
     }
 }
-
 
 ReactDOM.render(
     <Library books={bookList}/>,
