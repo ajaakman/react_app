@@ -1,14 +1,43 @@
 import React, { Component} from 'react';
 import ReactDOM from 'react-dom';
-import Library from './Library';
+//import Library from './Library';
 
-let bookList = [
-    {"title": "The Sun Also Rises", "author": "Ernest Hemingway", },
-    {"title": "White Teeth", "author": "Zadie Smith", "pages": 480 },
-    {"title": "Cat's Cradle", "author": "Kurt Vonnegut", "pages": 304 }
-]
+const Hello = () => 
+    <div>
+        <p>Hello</p>
+    </div>
+
+const Goodbye = () => 
+    <div>
+        <p>Goodbye</p>
+    </div>
+
+class Main extends Component {  
+    
+    state = {
+        buttonPressed: true, 
+        timesClicked: 0
+    }
+
+    toggleButton = () => {
+        this.setState(prevState => ({
+            buttonPressed: !prevState.buttonPressed            
+        }))
+        this.state.timesClicked += 1
+    }
+
+    render() {
+        return (
+            <div>
+                <button onClick={this.toggleButton}>Click Me</button>
+                {this.state.buttonPressed ? <Hello /> : <Goodbye />}
+                {this.state.timesClicked}
+            </div>
+        )
+    }
+}
 
 ReactDOM.render(
-    <Library books={bookList} />,
+    <Main />,
     document.getElementById('root')
 )
